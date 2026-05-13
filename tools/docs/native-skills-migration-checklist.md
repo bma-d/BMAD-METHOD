@@ -205,17 +205,14 @@ Support assumption: full Agent Skills support. BMAD currently uses a custom inst
 - [x] Implement/extend automated tests — 11 assertions in test suite 17 including marker cleanup
 - [x] Commit
 
-## KiloCoder — SUSPENDED
-
-**Status: Kilo Code does not support the Agent Skills standard.** The original migration assumed skills support because Kilo forked from Roo Code, but manual IDE verification confirmed Kilo has not merged that feature. BMAD support is paused until Kilo implements skills.
+## KiloCoder
 
 **Install:** VS Code extension `kilocode.kilo-code` — search "Kilo Code" in Extensions or `code --install-extension kilocode.kilo-code`
 
-- [x] ~~Confirm KiloCoder native skills path~~ — **FALSE**: assumed from Roo Code fork, not verified. Manual testing showed no skills support in the IDE
-- [x] Config and installer code retained in platform-codes.yaml with `suspended` flag — hidden from IDE picker, setup blocked with explanation
-- [x] Installer fails early (before writing `_bmad/`) if Kilo is the only selected IDE, protecting existing installations
-- [x] Legacy cleanup still runs for `.kilocode/workflows` and `.kilocodemodes` when users switch to a different IDE
-- [x] Automated tests — 7 assertions in suite 22 (suspended config, hidden from picker, setup blocked, no files written, legacy cleanup)
+- [x] Confirm KiloCoder native skills path — `.kilocode/skills`
+- [x] Legacy cleanup for `.kilocode/workflows` and `.kilocodemodes`
+- [x] Automated tests — suite 22 (config, IDE picker, install, skill output, legacy cleanup, reinstall)
+- [x] Commit
 
 ## Gemini CLI
 
@@ -225,7 +222,6 @@ Support assumption: full Agent Skills support. Gemini CLI docs confirm workspace
 
 - [x] Confirm Gemini CLI native skills path is `.gemini/skills/{skill-name}/SKILL.md` (per [geminicli.com/docs/cli/skills](https://geminicli.com/docs/cli/skills/))
 - [x] Implement native skills output — target_dir `.gemini/skills`, skill_format true, template_type default (replaces TOML templates)
-- [x] Add legacy cleanup for `.gemini/commands` (via `legacy_targets`)
 - [x] Test fresh install — skills written to `.gemini/skills/bmad-master/SKILL.md` with correct frontmatter
 - [x] Test reinstall/upgrade from legacy TOML command output — legacy dir removed, skills installed
 - [x] Confirm no ancestor conflict protection is needed — Gemini CLI uses workspace > user > extension precedence, no ancestor directory inheritance
@@ -239,7 +235,6 @@ Support assumption: full Agent Skills support. iFlow docs confirm workspace skil
 
 - [x] Confirm iFlow native skills path is `.iflow/skills/{skill-name}/SKILL.md`
 - [x] Implement native skills output — target_dir `.iflow/skills`, skill_format true, template_type default
-- [x] Add legacy cleanup for `.iflow/commands` (via `legacy_targets`)
 - [x] Test fresh install — skills written to `.iflow/skills/bmad-master/SKILL.md`
 - [x] Test legacy cleanup — legacy commands dir removed
 - [x] Implement/extend automated tests — 6 assertions in test suite 24
@@ -252,7 +247,6 @@ Support assumption: full Agent Skills support. Qwen Code supports workspace skil
 
 - [x] Confirm QwenCoder native skills path is `.qwen/skills/{skill-name}/SKILL.md`
 - [x] Implement native skills output — target_dir `.qwen/skills`, skill_format true, template_type default
-- [x] Add legacy cleanup for `.qwen/commands` (via `legacy_targets`)
 - [x] Test fresh install — skills written to `.qwen/skills/bmad-master/SKILL.md`
 - [x] Test legacy cleanup — legacy commands dir removed
 - [x] Implement/extend automated tests — 6 assertions in test suite 25
@@ -265,7 +259,6 @@ Support assumption: full Agent Skills support. Rovo Dev now supports workspace s
 
 - [x] Confirm Rovo Dev native skills path is `.rovodev/skills/{skill-name}/SKILL.md` (per Atlassian blog)
 - [x] Replace 257-line custom `rovodev.js` with config-driven entry in `platform-codes.yaml`
-- [x] Add legacy cleanup for `.rovodev/workflows` (via `legacy_targets`) and BMAD entries in `prompts.yml` (via `cleanupRovoDevPrompts()` in `_config-driven.js`)
 - [x] Test fresh install — skills written to `.rovodev/skills/bmad-master/SKILL.md`
 - [x] Test legacy cleanup — legacy workflows dir removed, `prompts.yml` BMAD entries stripped while preserving user entries
 - [x] Implement/extend automated tests — 8 assertions in test suite 26
